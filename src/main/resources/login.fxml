@@ -4,67 +4,46 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane fx:id="login"  xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fitnessworld.loginController">
-    <VBox fx:id="vb" alignment="CENTER_LEFT" prefHeight="623.0" prefWidth="468.0" spacing="20" styleClass="vbox-style">
-    <padding>
-        <Insets bottom="20" left="20" right="20" top="20" />
-    </padding>
 
+<AnchorPane  xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fitnessworld.loginController" style="-fx-background-color: linear-gradient(to bottom, #e3f2fd, #90caf9);">
+    <VBox  alignment="CENTER_LEFT" prefHeight="623.0" prefWidth="468.0" spacing="20" style="-fx-padding: 30;">
+<!--        <Label text="Log in" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #004d98; -fx-font-style: italic;">-->
+<!--            <VBox.margin>-->
+<!--                <Insets top="-50"/>-->
+<!--            </VBox.margin>-->
+<!--        </Label>-->
 
-    <Label style="-fx-font-size: 36px; -fx-font-weight: bold;" text="Log in">
-        <font>
-            <Font name="Bell MT" size="36.0" />
-        </font>
-        <VBox.margin>
-            <Insets top="-50" />
-        </VBox.margin>
-    </Label>
+        <VBox alignment="CENTER_LEFT" prefWidth="300" spacing="5">
+            <Label text="Username or Email" style="-fx-font-size: 16px; -fx-font-style: italic; -fx-text-fill: #004d98;"/>
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <TextField fx:id="usernameField" promptText="Enter your Username" prefHeight="35" prefWidth="300" style="-fx-border-color: #004d98; -fx-border-radius: 5; -fx-background-radius: 5;"/>
+            </HBox>
+        </VBox>
 
+        <VBox alignment="CENTER_LEFT" prefWidth="300" spacing="5">
+            <Label text="Password" style="-fx-font-size: 16px; -fx-font-style: italic; -fx-text-fill: #004d98;"/>
+            <HBox fx:id="passwordContainer" alignment="CENTER_LEFT" spacing="10">
+                <PasswordField fx:id="passwordField" promptText="Enter a strong password (8+ characters)" prefHeight="35" prefWidth="300" style="-fx-border-color: #004d98; -fx-border-radius: 5; -fx-background-radius: 5;"/>
+                <CheckBox fx:id="showPasswordCheckbox" onAction="#handleShowPassword" style="-fx-font-size: 14px; -fx-text-fill: #004d98;" text="Show"/>
+            </HBox>
+        </VBox>
 
-    <VBox alignment="CENTER_LEFT" prefWidth="300" spacing="5">
-        <Label style="-fx-font-size: 16px;" text="Username or Email">
-            <font>
-                <Font name="Arial Rounded MT Bold" size="16.0" />
-            </font>
-        </Label>
-        <HBox alignment="CENTER_LEFT" spacing="10">
-            <TextField fx:id="usernameField" prefHeight="35" prefWidth="300" />
+        <HBox spacing="20">
+            <RadioButton fx:id="traineeRadioButton" text="Trainee" style="-fx-font-size: 14px; -fx-text-fill: #004d98;">
+                <toggleGroup>
+                    <ToggleGroup fx:id="roleToggleGroup"/>
+                </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="adminRadioButton" text="Admin" style="-fx-font-size: 14px; -fx-text-fill: #004d98;" toggleGroup="$roleToggleGroup"/>
+            <RadioButton fx:id="coachRadioButton" text="Coach" style="-fx-font-size: 14px; -fx-text-fill: #004d98;" toggleGroup="$roleToggleGroup"/>
         </HBox>
+
+        <Button onAction="#handleLogin" prefHeight="40" prefWidth="300" style="-fx-background-color: #004d98; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16px; -fx-border-radius: 5; -fx-background-radius: 5;" text="Log in"/>
+
+        <VBox spacing="10">
+            <Hyperlink onAction="#handleForgetPassword" text="Forgot password?" style="-fx-font-size: 14px; -fx-text-fill: #004d98;"/>
+            <Hyperlink onAction="#handleDidnthaveanaccount" text="Didn't have an account?" style="-fx-font-size: 14px; -fx-text-fill: #004d98;"/>
+        </VBox>
+
     </VBox>
-
-    <VBox alignment="CENTER_LEFT" prefWidth="300" spacing="5">
-        <Label style="-fx-font-size: 16px;" text="Password">
-            <font>
-                <Font name="Arial Rounded MT Bold" size="16.0" />
-            </font>
-        </Label>
-        <HBox fx:id="passwordContainer" alignment="CENTER_LEFT" spacing="10">
-            <PasswordField fx:id="passwordField" prefHeight="35" prefWidth="300" />
-            <CheckBox fx:id="showPasswordCheckbox" onAction="#handleShowPassword" style="-fx-font-size: 14px;" text="Show" />
-        </HBox>
-    </VBox>
-
-    <HBox spacing="20">
-        <RadioButton fx:id="traineeRadioButton" text="Trainee">
-            <toggleGroup>
-               <ToggleGroup fx:id="roleToggleGroup" />
-            </toggleGroup></RadioButton>
-        <RadioButton fx:id="adminRadioButton" text="Admin" toggleGroup="$roleToggleGroup" />
-        <RadioButton fx:id="coachRadioButton" text="Coach" toggleGroup="$roleToggleGroup" />
-    </HBox>
-
-
-    <VBox spacing="10">
-        <Hyperlink onAction="#handleForgetPassword" style="-fx-font-size: 14px;" text="Forgot password?" />
-        <Hyperlink onAction="#handleDidnthaveanaccount" style="-fx-font-size: 14px;" text="Didn't have an account?" />
-    </VBox>
-
-
-    <Button onAction="#handleLogin" prefHeight="30" prefWidth="180" style="-fx-background-color: #007bff; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16px;" text="Log in">
-        <font>
-            <Font size="16.0" />
-        </font>
-    </Button>
-
-</VBox>
 </AnchorPane>

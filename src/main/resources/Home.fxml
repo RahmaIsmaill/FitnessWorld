@@ -1,42 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.fitnessworld.Home"
-            prefHeight="500.0" prefWidth="500.0">
+<AnchorPane prefHeight="680.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fitnessworld.Home">
 
-    <!-- Main HBox for the top bar -->
-    <HBox prefWidth="100%" prefHeight="60" style="-fx-background-color: #2C3E50; -fx-padding: 10;" spacing="15">
+    <VBox spacing="0">
+        <HBox prefHeight="80" prefWidth="770.0" style="-fx-background-color: linear-gradient(to bottom, #f0f8ff, #b3cde0); -fx-padding: 10;">
+            <Label style=" -fx-font-family: 'Algerian'; -fx-font-size: 32px; -fx-font-weight: normal; -fx-text-fill: #34495E; -fx-padding: 10, 0, 0, 10;" text="Home" />
+            <Region HBox.hgrow="ALWAYS" />
+            <MenuBar style="-fx-background-color: linear-gradient(to bottom, #f0f8ff, #b3cde0); -fx-font-family: 'Algerian'; -fx-font-size: 14px; -fx-font-weight: normal; -fx-text-fill: white; -fx-padding: 10, 0, 0, 10;">
+                <Menu style="-fx-font-family: 'Algerian'; -fx-font-size: 15px; -fx-font-weight: normal; -fx-text-fill: white; -fx-padding: 10, 0, 0, 15;" text="Programs">
+                    <MenuItem style="-fx-text-fill: #34495E; -fx-font-weight: bold;" text="All" onAction="#handleAllCourses"/>
+                    <MenuItem style="-fx-text-fill: #34495E; -fx-font-weight: bold;" text="Enrolled" onAction="#handleEnrolledCourses"/>
+                </Menu>
+                <Menu style="-fx-font-family: 'Algerian'; -fx-font-size: 15px; -fx-font-weight: normal; -fx-text-fill: white; -fx-padding: 10, 0, 0, 15;" text="Couches">
+                    <MenuItem style="-fx-text-fill: #34495E; -fx-font-weight: bold;" text="Couches" onAction="#handlegotocouches" />
+                </Menu>
+                <Menu style="-fx-font-family: 'Algerian'; -fx-font-size: 15px; -fx-font-weight: normal; -fx-text-fill: white; -fx-padding: 10, 0, 0, 15;" text="Profile">
+                    <MenuItem style="-fx-text-fill: #34495E; -fx-font-weight: bold;" text="Personal Details" onAction="#handlepersonalInfo"/>
+                    <MenuItem style="-fx-text-fill: #34495E; -fx-font-weight: bold;" text="About" onAction="#handlegoAbout"/>
+                </Menu>
+                <Menu style="-fx-font-family: 'Algerian'; -fx-font-size: 15px; -fx-font-weight: normal; -fx-text-fill: white; -fx-padding: 10, 0, 0, 15;" text="Contact Us">
+                    <MenuItem style="-fx-text-fill: #34495E; -fx-font-weight: bold;" text="Facebook"  onAction="#handlefacebook"/>
+                    <MenuItem style="-fx-text-fill: #34495E; -fx-font-weight: bold;" text="WhatsApp" onAction="#handleWhatsApp"/>
+                    <MenuItem style="-fx-text-fill: #34495E; -fx-font-weight: bold;" text="Instagram" onAction="#handleinsta" />
+                    <MenuItem style="-fx-text-fill: #34495E; -fx-font-weight: bold;" text="Twitter" onAction="#handleX" />
+                </Menu>
+            </MenuBar>
+        </HBox>
 
-        <!-- Label aligned to the left with padding and enhanced styling -->
-        <Label text="Home" style="
-            -fx-font-size: 18px;
-            -fx-text-fill: white;
-            -fx-font-weight: bold;
-            -fx-padding: 10, 0, 0, 15;" />
+        <HBox spacing="20" style="-fx-padding: 20; -fx-background-color: linear-gradient(to bottom, #f0f8ff, #b3cde0);" prefHeight="600">
+            <VBox prefWidth="370" style="-fx-padding: 10; -fx-background-color: linear-gradient(to bottom, #f0f8ff, #b3cde0);">
+                <Label prefHeight="560" prefWidth="390" wrapText="true" style="-fx-background-color: white; -fx-font-size: 14px; -fx-text-fill: #2C3E50; -fx-border-color: #BDC3C7; -fx-border-radius: 5; -fx-padding: 15;"
+                       text="Welcome to Our Fitness World Club .
 
-        <!-- Spacer to push the menu to the right -->
-        <Region HBox.hgrow="ALWAYS" />
+At Our Fitness World Club, we are dedicated to helping you achieve your health and wellness goals in a supportive and motivating environment. Whether you're a seasoned athlete or just starting your fitness journey, our team of expert trainers and state-of-the-art facilities are here to guide you every step of the way.
 
-        <!-- Menu Bar aligned to the right with modern styling -->
-        <MenuBar style="-fx-background-color: #34495E; -fx-text-fill: white;">
-            <Menu text="File" style="-fx-text-fill: white;">
-                <MenuItem text="New" />
-                <MenuItem text="Open" />
-                <MenuItem text="Save" />
-            </Menu>
-            <Menu text="Edit" style="-fx-text-fill: white;">
-                <MenuItem text="Undo" />
-                <MenuItem text="Redo" />
-            </Menu>
-            <Menu text="Help" style="-fx-text-fill: white;">
-                <MenuItem text="About" />
-            </Menu>
-        </MenuBar>
-    </HBox>
+We offer a wide range of fitness programs tailored to meet your individual needs, including group classes, personal training, and specialized courses. Our commitment to providing a safe and inclusive space ensures that every member can work at their own pace, while being inspired to push their limits.
 
+Join us today and become part of a community that values strength, dedication, and personal growth.    Together, we will work towards a healthier, stronger you.
+
+Your fitness journey starts here." />
+            </VBox>
+
+            <VBox alignment="CENTER" prefHeight="600" prefWidth="370" style="-fx-background-color: linear-gradient(to bottom, #f0f8ff, #b3cde0); -fx-padding: 10;">
+                <ImageView fitHeight="560" fitWidth="370" preserveRatio="true">
+                    <image>
+                        <Image url="@Home.jpg" />
+                    </image>
+                </ImageView>
+            </VBox>
+        </HBox>
+    </VBox>
 </AnchorPane>

@@ -2,15 +2,12 @@ package org.example.fitnessworld;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 
-public class HelloController {
+import java.io.IOException;
+
+public class loginController {
 
     @FXML
     private TextField usernameField;
@@ -38,13 +35,12 @@ public class HelloController {
     @FXML
     private RadioButton coachRadioButton;
 
-    public void initialize() throws Exception {
+    public void initialize() {
         roleToggleGroup = new ToggleGroup();
         traineeRadioButton.setToggleGroup(roleToggleGroup);
         adminRadioButton.setToggleGroup(roleToggleGroup);
         coachRadioButton.setToggleGroup(roleToggleGroup);
     }
-
 
     @FXML
     public void handleShowPassword(ActionEvent actionEvent) {
@@ -65,33 +61,29 @@ public class HelloController {
     }
 
     @FXML
-    public void handleForgetPassword(ActionEvent actionEvent) throws Exception {
-        switchScene(actionEvent, "forgetPassword.fxml");
+    public void handleForgetPassword(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchScene(actionEvent, "/forgotPassword.fxml");
     }
 
     @FXML
-    public void handleDidnthaveanaccount(ActionEvent actionEvent) throws Exception {
-        switchScene(actionEvent, "signUP.fxml");
+    public void handleDidnthaveanaccount(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchScene(actionEvent, "/signUP.fxml");
     }
-
-    private void switchScene(ActionEvent event, String fxmlFile) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root, 600, 450));
-        stage.show();
-    }
-
 
     @FXML
-    public void handleLogin(ActionEvent actionEvent) throws Exception {
+    public void handleLogin(ActionEvent actionEvent) throws IOException {
         String username = usernameField.getText();
         String pass = passwordField.getText();
-
 
         if (username.isEmpty()) {
             showAlert(Alert.AlertType.INFORMATION, "Login Failed", "Username cannot be empty.");
             return;
         }
+        if (!username.matches("^[a-zA-Z][a-zA-Z0-9]*$")) {
+            showAlert(Alert.AlertType.INFORMATION, "Login Failed", "Username must start with a letter and contain only letters and digits.");
+            return;
+        }
+
 
         if (!validateRole(username)) {
             showAlert(Alert.AlertType.INFORMATION, "Login Failed", "Invalid role selected for the username.");
@@ -99,18 +91,25 @@ public class HelloController {
         }
 
         if (pass.isEmpty()) {
-            showAlert(Alert.AlertType.INFORMATION, "Login Failed", "Invalid Password.");
+            showAlert(Alert.AlertType.INFORMATION, "Login Failed", "Password cannot be empty.");
             return;
         }
 
         if (pass.length() <= 8) {
-            showAlert(Alert.AlertType.INFORMATION, "Login Failed", "Password must contain more than 8 letters.");
+            showAlert(Alert.AlertType.INFORMATION, "Login Failed", "Enter a strong password (8+ characters)");
             return;
         }
 
-        showAlert(Alert.AlertType.INFORMATION, "Success", "Login successful!");
 
-    }
+
+        if (!traineeRadioButton.isSelected() && !coachRadioButton.isSelected() && !adminRadioButton.isSelected()) {
+            showAlert(Alert.AlertType.INFORMATION, "Login Failed", "A role must be selected.");
+            return;
+        }
+        showAlert(Alert.AlertType.INFORMATION, "Success", "Login successful!");
+            SceneSwitcher.switchScene(actionEvent, "/Home.fxml");
+        }
+
 
     private void showAlert(Alert.AlertType information, String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -121,12 +120,13 @@ public class HelloController {
     }
 
     private boolean validateRole(String username) {
-        if ((username.toLowerCase().startsWith("coach") && !coachRadioButton.isSelected()) || (!username.toLowerCase().startsWith("coach") && coachRadioButton.isSelected()) || (username.toLowerCase().startsWith("admin") && !adminRadioButton.isSelected()) || (!username.toLowerCase().startsWith("admin") && adminRadioButton.isSelected()) || (username.toLowerCase().startsWith("admin") || username.toLowerCase().startsWith("coach") && traineeRadioButton.isSelected()))
-            return true;
-        return false;
-    }
-
-    public void handlejoinNow(ActionEvent actionEvent) {
-
+        if ((username.toLowerCase().startsWith("coach") && !coachRadioButton.isSelected()) ||
+                (!username.toLowerCase().startsWith("coach") && coachRadioButton.isSelected()) ||
+                (username.toLowerCase().startsWith("admin") && !adminRadioButton.isSelected()) ||
+                (!username.toLowerCase().startsWith("admin") && adminRadioButton.isSelected()) ||
+                (username.toLowerCase().startsWith("admin") || username.toLowerCase().startsWith("coach") && traineeRadioButton.isSelected())) {
+            return false;
+        }
+        return true;
     }
 }

@@ -6,9 +6,51 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
 
-</AnchorPane>
+<VBox prefWidth="400" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.fitnessworld.profileAbout" alignment="CENTER" spacing="20" style="-fx-background-color: linear-gradient(to bottom, #e0f7fa, #b2ebf2); -fx-padding: 30;">
+
+
+    <Label text="
+
+Personal Details" style="-fx-font-size: 26px; -fx-font-weight: bold;  -fx-font-style: italic;  -fx-text-fill: #004d98;"/>
+
+
+    <HBox spacing="8">
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label text="   Age  " style="-fx-font-size: 16px; -fx-font-style: italic; -fx-text-fill: #004d98;"/>
+        </HBox>
+        <Label fx:id="AgeLabel" style="-fx-pref-height: 40px; -fx-border-color: #004d98; -fx-border-radius: 5; -fx-background-radius: 5;"/>
+    </HBox>
+
+
+    <HBox spacing="8">
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label text="Weight" style="-fx-font-size: 16px; -fx-font-style: italic; -fx-text-fill: #004d98;"/>
+        </HBox>
+        <Label fx:id="WeightLabel" style="-fx-pref-height: 40px; -fx-border-color: #004d98; -fx-border-radius: 5; -fx-background-radius: 5;"/>
+    </HBox>
+
+
+    <HBox spacing="8">
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label text="Height " style="-fx-font-size: 16px; -fx-font-style: italic; -fx-text-fill: #004d98;"/>
+        </HBox>
+        <Label fx:id="HeightLabel" style="-fx-pref-height: 40px; -fx-border-color: #004d98; -fx-border-radius: 5; -fx-background-radius: 5;"/>
+    </HBox>
+
+    <HBox spacing="8">
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label text="   Goal " style="-fx-font-size: 16px; -fx-font-style: italic; -fx-text-fill: #004d98;"/>
+        </HBox>
+        <Label fx:id="GoalLabel" style="-fx-pref-height: 40px; -fx-border-color: #004d98; -fx-border-radius: 5; -fx-background-radius: 5;"/>
+    </HBox>
+
+    <HBox spacing="8">
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label text="Membership Date " style="-fx-font-size: 16px; -fx-font-style: italic; -fx-text-fill: #004d98;"/>
+        </HBox>
+        <Label fx:id="memberLabel" style="-fx-pref-height: 40px; -fx-border-color: #004d98; -fx-border-radius: 5; -fx-background-radius: 5;"/>
+    </HBox>
+    <Button text="OK" onAction="#handleok" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-background-color: #004d98; -fx-text-fill: white; -fx-border-radius: 5; -fx-background-radius: 5; -fx-pref-height: 40px; -fx-pref-width: 150px;"/>
+</VBox>
+

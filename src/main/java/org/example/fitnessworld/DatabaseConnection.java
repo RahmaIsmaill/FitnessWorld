@@ -1,3 +1,5 @@
+package org.example.fitnessworld;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -8,7 +10,7 @@ public class DatabaseConnection {
     private static final String PASSWORD = "";
     private static Connection connection;
 
-    public  Connection connect() {
+    public static Connection connect() {
         try {
             if (connection == null || connection.isClosed()) {
                 connection = DriverManager.getConnection(URL, USER, PASSWORD);
@@ -28,6 +30,13 @@ public class DatabaseConnection {
             }
         } catch (SQLException e) {
             System.out.println("Error closing connection: " + e.getMessage());
+        }
+    }
+    public static void testConnection() {
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD)) {
+            System.out.println("Connection test SUCCESSFUL!");
+        } catch (SQLException e) {
+            System.out.println("Connection test FAILED: " + e.getMessage());
         }
     }
 }
