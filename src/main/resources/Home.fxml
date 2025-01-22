@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.fitnessworld.Home"
+            prefHeight="500.0" prefWidth="500.0">
+
+    <!-- Main HBox for the top bar -->
+    <HBox prefWidth="100%" prefHeight="60" style="-fx-background-color: #2C3E50; -fx-padding: 10;" spacing="15">
+
+        <!-- Label aligned to the left with padding and enhanced styling -->
+        <Label text="Home" style="
+            -fx-font-size: 18px;
+            -fx-text-fill: white;
+            -fx-font-weight: bold;
+            -fx-padding: 10, 0, 0, 15;" />
+
+        <!-- Spacer to push the menu to the right -->
+        <Region HBox.hgrow="ALWAYS" />
+
+        <!-- Menu Bar aligned to the right with modern styling -->
+        <MenuBar style="-fx-background-color: #34495E; -fx-text-fill: white;">
+            <Menu text="File" style="-fx-text-fill: white;">
+                <MenuItem text="New" />
+                <MenuItem text="Open" />
+                <MenuItem text="Save" />
+            </Menu>
+            <Menu text="Edit" style="-fx-text-fill: white;">
+                <MenuItem text="Undo" />
+                <MenuItem text="Redo" />
+            </Menu>
+            <Menu text="Help" style="-fx-text-fill: white;">
+                <MenuItem text="About" />
+            </Menu>
+        </MenuBar>
+    </HBox>
+
+</AnchorPane>

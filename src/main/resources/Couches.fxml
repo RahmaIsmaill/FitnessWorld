@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.fitnessworld.Couches"
+            prefHeight="600.0" prefWidth="600.0">
+    <HBox spacing="20" style="-fx-padding: 10;">
+        <VBox fx:id="leftVBox" spacing="10" prefWidth="400" HBox.hgrow="ALWAYS">
+        <ScrollPane fitToHeight="true" fitToWidth="true">
+            <VBox spacing="10">
+                <HBox spacing="10">
+                    <ImageView fitHeight="200" fitWidth="200" preserveRatio="true">
+                        <image>
+                            <Image url="@download.jpg" />
+                        </image>
+                    </ImageView>
+                    <Label text="Description for image1.jpg" wrapText="true" style="-fx-font-size: 12px; -fx-text-fill: #34495E;" />
+                </HBox>
+
+
+                <HBox spacing="10">
+                    <ImageView fitHeight="200" fitWidth="200" preserveRatio="true">
+                        <image>
+                            <Image url="@premium_photo-1663050901483-ee8703cc8372.jpg" />
+                        </image>
+                    </ImageView>
+                    <Label text="Description for image2.jpg" wrapText="true" style="-fx-font-size: 12px; -fx-text-fill: #34495E;" />
+                </HBox>
+
+                <HBox spacing="10">
+                    <ImageView fitHeight="200" fitWidth="200" preserveRatio="true">
+                        <image>
+                            <Image url="@young-bangladeshi-male-fitness-trainer-in-modern-gym-environment-suitable-for-health-and-wellness-promotions-exercise-tutorials-and-gym-advertisements-photo.jpg" />
+                        </image>
+                    </ImageView>
+                    <Label text="Description for image2.jpg" wrapText="true" style="-fx-font-size: 12px; -fx-text-fill: #34495E;" />
+                </HBox>
+
+                <HBox spacing="10">
+                    <ImageView fitHeight="200" fitWidth="200" preserveRatio="true">
+                        <image>
+                            <Image url="@Online+Personal+Trainer.jpg" />
+                        </image>
+                    </ImageView>
+                    <Label text="Description for image2.jpg" wrapText="true" style="-fx-font-size: 12px; -fx-text-fill: #34495E;" />
+                </HBox>
+
+                <HBox spacing="10">
+                    <ImageView fitHeight="200" fitWidth="200" preserveRatio="true">
+                        <image>
+                            <Image url="@images.jpg" />
+                        </image>
+                    </ImageView>
+                    <Label text="Description for image2.jpg" wrapText="true" style="-fx-font-size: 12px; -fx-text-fill: #34495E;" />
+                </HBox>
+                <HBox spacing="10">
+                    <ImageView fitHeight="200" fitWidth="200" preserveRatio="true">
+                        <image>
+                            <Image url="@istockphoto-1040501222-612x612.jpg" />
+                        </image>
+                    </ImageView>
+                    <Label text="Description for image2.jpg" wrapText="true" style="-fx-font-size: 12px; -fx-text-fill: #34495E;" />
+                </HBox>
+
+                <HBox spacing="10">
+                    <ImageView fitHeight="200" fitWidth="200" preserveRatio="true">
+                        <image>
+                            <Image url="@bearded-man-professional-personal-trainer-standing-at-gym-crossed-arms-looking-camera-cool-T57N78.jpg" />
+                        </image>
+                    </ImageView>
+                    <Label text="Description for image2.jpg" wrapText="true" style="-fx-font-size: 12px; -fx-text-fill: #34495E;" />
+                </HBox>
+         </VBox>
+        </ScrollPane>
+        </VBox>
+
+        <VBox fx:id="rightVBox" spacing="10" prefWidth="200" HBox.hgrow="ALWAYS" style="-fx-background-color: linear-gradient(to bottom, #e0e0e0, #9e9e9e);">
+
+        </VBox>
+    </HBox>
+</AnchorPane>
