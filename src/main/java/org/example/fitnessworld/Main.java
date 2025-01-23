@@ -22,7 +22,7 @@ public class Main extends Application {
             return;
         }
 
-        FXMLLoader fxmlLoader = new FXMLLoader(SceneSwitcher.class.getResource("/login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(SceneSwitcher.class.getResource("/programs.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         primaryStage.setTitle("Fitness World");
         primaryStage.setScene(scene);
@@ -40,7 +40,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        DatabaseConnection.testConnection(); // Add this line
+        DatabaseConnection.testConnection();
         launch(args);
     }
 }

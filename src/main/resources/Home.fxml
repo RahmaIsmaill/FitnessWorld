@@ -5,29 +5,33 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="680.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fitnessworld.Home">
+<AnchorPane style="fx-background-color: linear-gradient(to right, #004d80, #66a5ad);" prefHeight="680.0" prefWidth="770.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fitnessworld.Home">
 
     <VBox spacing="0">
-        <HBox prefHeight="80" prefWidth="770.0" style="-fx-background-color: linear-gradient(to bottom, #f0f8ff, #b3cde0); -fx-padding: 10;">
-            <Label style=" -fx-font-family: 'Algerian'; -fx-font-size: 32px; -fx-font-weight: normal; -fx-text-fill: #34495E; -fx-padding: 10, 0, 0, 10;" text="Home" />
+
+        <HBox prefHeight="80" prefWidth="770.0" style="-fx-background-color: linear-gradient(to right, #004d80, #66a5ad); -fx-padding: 15; -fx-alignment: CENTER_LEFT;">
+            <Label text="Fitness World" style="-fx-font-family: 'Algerian'; -fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: white;" />
             <Region HBox.hgrow="ALWAYS" />
-            <MenuBar style="-fx-background-color: linear-gradient(to bottom, #f0f8ff, #b3cde0); -fx-font-family: 'Algerian'; -fx-font-size: 14px; -fx-font-weight: normal; -fx-text-fill: white; -fx-padding: 10, 0, 0, 10;">
-                <Menu style="-fx-font-family: 'Algerian'; -fx-font-size: 15px; -fx-font-weight: normal; -fx-text-fill: white; -fx-padding: 10, 0, 0, 15;" text="Programs">
-                    <MenuItem style="-fx-text-fill: #34495E; -fx-font-weight: bold;" text="All" onAction="#handleAllCourses"/>
-                    <MenuItem style="-fx-text-fill: #34495E; -fx-font-weight: bold;" text="Enrolled" onAction="#handleEnrolledCourses"/>
+            <MenuBar style="-fx-background-color: transparent; -fx-font-family: 'Segoe UI'; -fx-font-size: 14px;">
+                <Menu text="Programs" style="-fx-text-fill: white; -fx-font-family: 'Algerian';">
+                    <MenuItem text="All" onAction="#handleAllCourses"/>
+                    <MenuItem text="Enrolled" onAction="#handleEnrolledCourses"/>
                 </Menu>
-                <Menu style="-fx-font-family: 'Algerian'; -fx-font-size: 15px; -fx-font-weight: normal; -fx-text-fill: white; -fx-padding: 10, 0, 0, 15;" text="Couches">
-                    <MenuItem style="-fx-text-fill: #34495E; -fx-font-weight: bold;" text="Couches" onAction="#handlegotocouches" />
+                <Menu text="Coaches" style="-fx-text-fill: white; -fx-font-family: 'Algerian'; ">
+                    <MenuItem text="Coaches" onAction="#handlegotocouches" />
                 </Menu>
-                <Menu style="-fx-font-family: 'Algerian'; -fx-font-size: 15px; -fx-font-weight: normal; -fx-text-fill: white; -fx-padding: 10, 0, 0, 15;" text="Profile">
-                    <MenuItem style="-fx-text-fill: #34495E; -fx-font-weight: bold;" text="Personal Details" onAction="#handlepersonalInfo"/>
-                    <MenuItem style="-fx-text-fill: #34495E; -fx-font-weight: bold;" text="About" onAction="#handlegoAbout"/>
+                <Menu text="Profile" style="-fx-text-fill: white; -fx-font-family: 'Algerian';">
+                    <MenuItem text="Personal Details" onAction="#handlepersonalInfo"/>
+                    <MenuItem text="About" onAction="#handlegoAbout"/>
                 </Menu>
-                <Menu style="-fx-font-family: 'Algerian'; -fx-font-size: 15px; -fx-font-weight: normal; -fx-text-fill: white; -fx-padding: 10, 0, 0, 15;" text="Contact Us">
-                    <MenuItem style="-fx-text-fill: #34495E; -fx-font-weight: bold;" text="Facebook"  onAction="#handlefacebook"/>
-                    <MenuItem style="-fx-text-fill: #34495E; -fx-font-weight: bold;" text="WhatsApp" onAction="#handleWhatsApp"/>
-                    <MenuItem style="-fx-text-fill: #34495E; -fx-font-weight: bold;" text="Instagram" onAction="#handleinsta" />
-                    <MenuItem style="-fx-text-fill: #34495E; -fx-font-weight: bold;" text="Twitter" onAction="#handleX" />
+                <Menu text="Contact Us" style="-fx-text-fill: white; -fx-font-family: 'Algerian';">
+                    <MenuItem text="Facebook" onAction="#handlefacebook"/>
+                    <MenuItem text="WhatsApp" onAction="#handleWhatsApp"/>
+                    <MenuItem text="Instagram" onAction="#handleinsta"/>
+                    <MenuItem text="Twitter" onAction="#handleX"/>
+                </Menu>
+                <Menu text="Log out" style="-fx-text-fill: white; -fx-font-family: 'Algerian';">
+                    <MenuItem text="LogOut" onAction="#handlegotoloinpage"  />
                 </Menu>
             </MenuBar>
         </HBox>
@@ -46,7 +50,7 @@ Join us today and become part of a community that values strength, dedication, a
 Your fitness journey starts here." />
             </VBox>
 
-            <VBox alignment="CENTER" prefHeight="600" prefWidth="370" style="-fx-background-color: linear-gradient(to bottom, #f0f8ff, #b3cde0); -fx-padding: 10;">
+            <VBox alignment="CENTER" prefHeight="600" prefWidth="370">
                 <ImageView fitHeight="560" fitWidth="370" preserveRatio="true">
                     <image>
                         <Image url="@Home.jpg" />

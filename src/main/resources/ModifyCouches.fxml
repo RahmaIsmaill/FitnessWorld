@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.FontWeight?>
+<?import javafx.scene.image.ImageView?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.fitnessworld.Couches"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <VBox prefHeight="400" prefWidth="600" spacing="15" alignment="TOP_CENTER" style="-fx-background-color: white; -fx-background-radius: 10px; -fx-padding: 20px;">
+        <Label text="Manage Coaches" style="-fx-font-family: 'Verdana'; -fx-font-size: 20px; -fx-text-fill: #004d80; -fx-font-weight: bold;"/>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Coach Name:" style="-fx-font-family: 'Arial'; -fx-font-size: 14px;"/>
+            <TextField fx:id="coachNameField" promptText="Enter coach name" style="-fx-font-family: 'Arial'; -fx-font-size: 14px;"/>
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Coach Age:" style="-fx-font-family: 'Arial'; -fx-font-size: 14px;"/>
+            <TextField fx:id="coachAgeField" promptText="Enter coach age" style="-fx-font-family: 'Arial'; -fx-font-size: 14px;"/>
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Programs:" style="-fx-font-family: 'Arial'; -fx-font-size: 14px;"/>
+            <TextField fx:id="programsField" promptText="Enter programs" style="-fx-font-family: 'Arial'; -fx-font-size: 14px;"/>
+        </HBox>
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Coach Image:" style="-fx-font-family: 'Arial'; -fx-font-size: 14px;"/>
+            <Button text="Upload Image" onAction="#uploadImage" style="-fx-background-color: #6C757D; -fx-text-fill: white; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 5px;"/>
+            <ImageView fx:id="coachImageView" fitWidth="100" fitHeight="100" preserveRatio="true"/>
+        </HBox>
+
+        <HBox spacing="20" alignment="CENTER" style="-fx-padding: 10px;">
+            <Button text="Add Coach" onAction="#addCouches" style="-fx-background-color: #28A745; -fx-text-fill: white; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 5px;"/>
+            <Button text="Update Coach" onAction="#updateCouches" style="-fx-background-color: #FFC107; -fx-text-fill: black; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 5px;"/>
+            <Button text="Delete Coach" onAction="#deleteCouches" style="-fx-background-color: #DC3545; -fx-text-fill: white; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 5px;"/>
+        </HBox>
+    </VBox>
+</AnchorPane>

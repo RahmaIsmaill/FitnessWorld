@@ -2,8 +2,8 @@ package org.example.fitnessworld;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-
 import java.io.IOException;
 
 public class PersonalInfo {
@@ -14,14 +14,24 @@ public class PersonalInfo {
     @FXML private Label membershipDateLabel;
 
     public void initialize() {
-        ageLabel.setText(User.getAge());
-        heightLabel.setText(User.getHeight());
-        weightLabel.setText(User.getWedith());
+        System.out.println("Initializing PersonalInfo...");
+        System.out.println("Age: " + User.getAge());
+        System.out.println("Height: " + User.getHeight());
+        System.out.println("Weight: " + User.getWeight());
+        System.out.println("Goal: " + User.getGoal());
+        System.out.println("Membership Date: " + User.getMembershipDate());
+
+        ageLabel.setText(String.valueOf(User.getAge()));
+        heightLabel.setText(String.valueOf(User.getHeight()));
+        weightLabel.setText(String.valueOf(User.getWeight()));
         goalLabel.setText(User.getGoal());
         membershipDateLabel.setText(User.getMembershipDate());
     }
 
+    @FXML
     public void handleOk(ActionEvent actionEvent) throws IOException {
-        SceneSwitcher.switchScene(actionEvent, "Home.fxml");
+        SceneSwitcher.switchScene(actionEvent, "/Home.fxml");
     }
+
+
 }

@@ -4,8 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
-
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class loginController {
 
@@ -72,61 +75,66 @@ public class loginController {
 
     @FXML
     public void handleLogin(ActionEvent actionEvent) throws IOException {
-        String username = usernameField.getText();
-        String pass = passwordField.getText();
+        String username = usernameField.getText().trim();
+        String password = passwordField.getText().trim();
+
 
         if (username.isEmpty()) {
-            showAlert(Alert.AlertType.INFORMATION, "Login Failed", "Username cannot be empty.");
-            return;
-        }
-        if (!username.matches("^[a-zA-Z][a-zA-Z0-9]*$")) {
-            showAlert(Alert.AlertType.INFORMATION, "Login Failed", "Username must start with a letter and contain only letters and digits.");
+            showAlert(Alert.AlertType.ERROR, "Login Failed", "Username cannot be empty.");
             return;
         }
 
-
-        if (!validateRole(username)) {
-            showAlert(Alert.AlertType.INFORMATION, "Login Failed", "Invalid role selected for the username.");
+        if (password.isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, "Login Failed", "Password cannot be empty.");
             return;
         }
 
-        if (pass.isEmpty()) {
-            showAlert(Alert.AlertType.INFORMATION, "Login Failed", "Password cannot be empty.");
+        if (password.length() <= 8) {
+            showAlert(Alert.AlertType.ERROR, "Login Failed", "Password must be at least 8 characters long.");
             return;
         }
-
-        if (pass.length() <= 8) {
-            showAlert(Alert.AlertType.INFORMATION, "Login Failed", "Enter a strong password (8+ characters)");
-            return;
-        }
-
-
 
         if (!traineeRadioButton.isSelected() && !coachRadioButton.isSelected() && !adminRadioButton.isSelected()) {
-            showAlert(Alert.AlertType.INFORMATION, "Login Failed", "A role must be selected.");
+            showAlert(Alert.AlertType.ERROR, "Login Failed", "Please select a role.");
             return;
         }
-        showAlert(Alert.AlertType.INFORMATION, "Success", "Login successful!");
-            SceneSwitcher.switchScene(actionEvent, "/Home.fxml");
+
+
+        String selectedRole = "";
+        if (traineeRadioButton.isSelected()) {
+            selectedRole = "Trainee";
+        } else if (coachRadioButton.isSelected()) {
+            selectedRole = "Coach";
+        } else if (adminRadioButton.isSelected()) {
+            selectedRole = "Admin";
         }
 
 
-    private void showAlert(Alert.AlertType information, String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+        try (Connection conn = DatabaseConnection.connect()) {
+            String sql = "SELECT * FROM users WHERE username = ? AND password = ? AND role = ?";
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setString(1, username);
+                stmt.setString(2, password);
+                stmt.setString(3, selectedRole);
+                ResultSet rs = stmt.executeQuery();
+
+                if (rs.next()) {
+                    showAlert(Alert.AlertType.INFORMATION, "Success", "Login successful!");
+                    SceneSwitcher.switchScene(actionEvent, "/Home.fxml");
+                } else {
+                    showAlert(Alert.AlertType.ERROR, "Login Failed", "Invalid username, password, or role.");
+                }
+            }
+        } catch (SQLException e) {
+            showAlert(Alert.AlertType.ERROR, "Database Error", "Failed to login: " + e.getMessage());
+        }
+    }
+
+    private void showAlert(Alert.AlertType type, String title, String message) {
+        Alert alert = new Alert(type);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
-    }
-
-    private boolean validateRole(String username) {
-        if ((username.toLowerCase().startsWith("coach") && !coachRadioButton.isSelected()) ||
-                (!username.toLowerCase().startsWith("coach") && coachRadioButton.isSelected()) ||
-                (username.toLowerCase().startsWith("admin") && !adminRadioButton.isSelected()) ||
-                (!username.toLowerCase().startsWith("admin") && adminRadioButton.isSelected()) ||
-                (username.toLowerCase().startsWith("admin") || username.toLowerCase().startsWith("coach") && traineeRadioButton.isSelected())) {
-            return false;
-        }
-        return true;
     }
 }

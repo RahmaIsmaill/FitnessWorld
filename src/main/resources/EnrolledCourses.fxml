@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fitnessworld.programs" spacing="20" alignment="TOP_CENTER" style="-fx-background-color: linear-gradient(to bottom, #004d80, #66a5ad);">
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fitnessworld.EnrolledCourses" spacing="20" alignment="TOP_CENTER" style="-fx-background-color: linear-gradient(to bottom, #004d80, #66a5ad);">
     <padding>
         <Insets top="30" right="30" bottom="30" left="30"/>
     </padding>
@@ -21,34 +21,29 @@
         <Label fx:id="welcomeLabel" text="Welcome, Admin!" style="-fx-font-family: 'Arial'; -fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"/>
     </VBox>
 
-
     <HBox spacing="20" alignment="CENTER" style="-fx-padding: 10px;">
         <Button fx:id="homeButton" text="Home" onAction="#navigateToHome" style="-fx-background-color: #007BFF; -fx-text-fill: white; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 5px;"/>
-        <Button fx:id="programsButton" text="Enrolled Programs" onAction="#navigateToPrograms" style="-fx-background-color: #007BFF; -fx-text-fill: white; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 5px;"/>
+        <Button fx:id="enrolledProgramsButton" text="Programs" onAction="#navigateToAllPrograms" style="-fx-background-color: #007BFF; -fx-text-fill: white; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 5px;"/>
         <Button fx:id="logoutButton" text="Logout" onAction="#logout" style="-fx-background-color: #DC3545; -fx-text-fill: white; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 5px;"/>
     </HBox>
 
-
     <VBox spacing="15" alignment="TOP_CENTER">
-        <Label text="Manage Programs" style="-fx-font-family: 'Verdana'; -fx-font-size: 22px; -fx-text-fill: white; -fx-font-weight: bold;"/>
-
+        <Label text="Manage Enrolled Programs" style="-fx-font-family: 'Verdana'; -fx-font-size: 22px; -fx-text-fill: white; -fx-font-weight: bold;"/>
 
         <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-border-color: #ADB5BD; -fx-border-radius: 5px;">
-            <TableView fx:id="programsTableView" prefHeight="400" prefWidth="900" style="-fx-background-radius: 5px;">
+            <TableView fx:id="enrolledProgramsTableView" prefHeight="400" prefWidth="900" style="-fx-background-radius: 5px;">
                 <columns>
-                    <TableColumn fx:id="programIdColumn" text="Program ID" prefWidth="250" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-alignment: CENTER;"/>
-                    <TableColumn fx:id="programNameColumn" text="Program Name" prefWidth="200" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-alignment: CENTER;"/>
+                    <TableColumn fx:id="ProgramIdColumn" text="Program ID" prefWidth="150" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-alignment: CENTER;"/>
+                    <TableColumn fx:id="ProgramNameColumn" text="Program Name" prefWidth="250" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-alignment: CENTER;"/>
                     <TableColumn fx:id="enrollmentDateColumn" text="Enrollment Date" prefWidth="250" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-alignment: CENTER;"/>
                     <TableColumn fx:id="priceColumn" text="Price" prefWidth="250" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-alignment: CENTER;"/>
                 </columns>
             </TableView>
         </ScrollPane>
 
-
         <HBox spacing="20" alignment="CENTER" style="-fx-padding: 10px;">
-            <Button text="Add Program" onAction="#addProgram" style="-fx-background-color: #28A745; -fx-text-fill: white; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 5px;"/>
-            <Button text="Update Program" onAction="#updateProgram" style="-fx-background-color: #FFC107; -fx-text-fill: black; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 5px;"/>
-            <Button text="Delete Program" onAction="#deleteProgram" style="-fx-background-color: #DC3545; -fx-text-fill: white; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 5px;"/>
+            <Button text="Buy Now" onAction="#BuyNow" style="-fx-background-color: #28A745; -fx-text-fill: white; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 5px;"/>
+            <Button text="Delete Enrollment" onAction="#deleteEnrollment" style="-fx-background-color: #DC3545; -fx-text-fill: white; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 5px;"/>
         </HBox>
     </VBox>
 </VBox>

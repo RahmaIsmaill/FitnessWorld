@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.FontWeight?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fitnessworld.PaymentController" spacing="20" alignment="TOP_CENTER" style="-fx-background-color: linear-gradient(to bottom, #004d80, #66a5ad);">
+    <padding>
+        <Insets top="30" right="30" bottom="30" left="30"/>
+    </padding>
+
+    <VBox spacing="10" alignment="CENTER">
+        <Label text="Fitness World Management System" style="-fx-font-family: 'Algerian'; -fx-font-size: 28px; -fx-text-fill: white; -fx-font-weight: bold;" />
+    </VBox>
+
+    <HBox spacing="20" alignment="CENTER" style="-fx-padding: 10px;">
+        <Button fx:id="homeButton" text="Home" onAction="#navigateToHome" style="-fx-background-color: #007BFF; -fx-text-fill: white; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 5px;"/>
+        <Button fx:id="logoutButton" text="Logout" onAction="#logout" style="-fx-background-color: #DC3545; -fx-text-fill: white; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 5px;"/>
+    </HBox>
+
+    <VBox spacing="15" alignment="TOP_CENTER" style="-fx-background-color: white; -fx-background-radius: 10px; -fx-padding: 20px;">
+        <Label text="Select Payment Plan" style="-fx-font-family: 'Verdana'; -fx-font-size: 20px; -fx-text-fill: #004d80; -fx-font-weight: bold;"/>
+
+
+
+        <HBox spacing="25">
+            <RadioButton fx:id="yearlyRadioButton" text="Yearly Plan ($500/year)" style="-fx-font-size: 14px; -fx-text-fill: #004d98;">
+                <toggleGroup>
+                    <ToggleGroup fx:id="roleToggleGroup"/>
+                </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="monthlyRadioButton" text="Monthly Plan ($50/month)" style="-fx-font-size: 14px; -fx-text-fill: #004d98;" toggleGroup="$roleToggleGroup"/>
+        </HBox>
+
+
+        <VBox spacing="10" alignment="TOP_LEFT" style="-fx-padding: 10px;">
+            <Label text="Payment Details" style="-fx-font-family: 'Verdana'; -fx-font-size: 18px; -fx-text-fill: #004d80; -fx-font-weight: bold;"/>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Card Number:" style="-fx-font-family: 'Arial'; -fx-font-size: 14px;"/>
+                <TextField fx:id="cardNumberField" promptText="Enter card number" style="-fx-font-family: 'Arial'; -fx-font-size: 14px;"/>
+            </HBox>
+
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="         CVV:     " style="-fx-font-family: 'Arial'; -fx-font-size: 14px;"/>
+                <TextField fx:id="cvvField" promptText="Enter CVV" style="-fx-font-family: 'Arial'; -fx-font-size: 14px;"/>
+            </HBox>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="     Method:   " style="-fx-font-family: 'Arial'; -fx-font-size: 14px;"/>
+                <ComboBox fx:id="paymentMethodComboBox" promptText="Select payment method" style="-fx-font-family: 'Arial'; -fx-font-size: 14px;">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Credit Card"/>
+                            <String fx:value="InstaPay"/>
+                            <String fx:value="PayPal"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+            </HBox>
+        </VBox>
+
+        <VBox spacing="10" alignment="TOP_LEFT" style="-fx-padding: 10px;">
+            <Label text="Summary" style="-fx-font-family: 'Verdana'; -fx-font-size: 18px; -fx-text-fill: #004d80; -fx-font-weight: bold;"/>
+            <Label fx:id="planSummaryLabel" text="Selected Plan: None" style="-fx-font-family: 'Arial'; -fx-font-size: 14px;"/>
+            <Label fx:id="totalAmountLabel" text="Total Amount: $0.00" style="-fx-font-family: 'Arial'; -fx-font-size: 14px;"/>
+        </VBox>
+
+        <Button text="Confirm Payment" onAction="#confirmPayment" style="-fx-background-color: #28A745; -fx-text-fill: white; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 5px;"/>
+    </VBox>
+</VBox>

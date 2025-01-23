@@ -2,188 +2,263 @@ package org.example.fitnessworld;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.util.Callback;
+import javafx.stage.FileChooser;
 
-import java.io.InputStream;
-import java.util.Objects;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.sql.*;
 
 public class Couches {
-    @FXML private ListView<Trainer> trainerListView;
-    @FXML private VBox rightVBox;
 
-    private final ObservableList<Trainer> trainers = FXCollections.observableArrayList();
+    private static final String URL = "jdbc:mysql://localhost:3306/fitnessworld";
+    private static final String USER = "root";
+    private static final String PASSWORD = "";
+
+    @FXML
+    private TextField couchNameField;
+    @FXML
+    private TextField couchAgeField;
+    @FXML
+    private TextField programsField;
+    @FXML
+    private ImageView couchImageView;
+
+    @FXML
+    private TableView<Couch> couchTableView;
+    @FXML
+    private TableColumn<Couch, String> nameColumn;
+    @FXML
+    private TableColumn<Couch, Integer> ageColumn;
+    @FXML
+    private TableColumn<Couch, String> programsColumn;
+    @FXML
+    private TableColumn<Couch, String> imagePathColumn;
+
+    private String imagePath;
 
     @FXML
     public void initialize() {
-        initializeSampleData();
-        configureListView();
+        System.out.println("Controller initialized!");
+
+        if (nameColumn == null || ageColumn == null || programsColumn == null || imagePathColumn == null) {
+            System.out.println("One or more TableColumn fields are null!");
+        } else {
+            nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+            ageColumn.setCellValueFactory(new PropertyValueFactory<>("age"));
+            programsColumn.setCellValueFactory(new PropertyValueFactory<>("programs"));
+            imagePathColumn.setCellValueFactory(new PropertyValueFactory<>("imagePath"));
+        }
+
+//        refreshCouchList(); // Uncomment this line once the TableColumn issue is resolved
     }
 
-    private void initializeSampleData() {
-        trainers.addAll(
-                new Trainer("Muhammed Aly", "download.jpg",
-                        "- Powerlifting and Olympic Lifting Basics",
-                        "- Muscle Gain and Fat Loss Program",
-                        "- Advanced Weightlifting Techniques"),
-                new Trainer("Ahmed Mahmoud", "premium_photo-1663050901483-ee8703cc8372.jpg",
-                        "- Strength and Conditioning Fundamentals",
-                        "- High-Intensity Interval Training (HIIT)",
-                        "- Personalized Bodyweight Training"),
-                new Trainer("Younnis Maghawry", "young-bangladeshi-male-fitness-trainer.jpg",
-                        "- Functional Mobility for Everyday Life",
-                        "- Core Strength and Balance Techniques",
-                        "- Yoga for Flexibility and Stress Relief"),
-                new Trainer("Marwan Kareem", "Online+Personal+Trainer.jpg",
-                        "- Speed and Agility Enhancement",
-                        "- Marathon and Long-Distance Running Training",
-                        "- Endurance and Stamina Building")
+    public void logout(ActionEvent actionEvent) throws IOException {
+        System.out.println("Logout button clicked!");
+        SceneSwitcher.switchScene(actionEvent, "/login.fxml");
+    }
+
+    public void navigateToHome(ActionEvent actionEvent) throws IOException {
+        System.out.println("Home button clicked!");
+        SceneSwitcher.switchScene(actionEvent, "/Home.fxml");
+    }
+
+    @FXML
+    public void uploadImage(ActionEvent actionEvent) {
+        System.out.println("Upload Image button clicked!");
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Couch Image");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
         );
+        File selectedFile = fileChooser.showOpenDialog(null);
+
+        if (selectedFile != null) {
+            try {
+                Path destination = Path.of("images", selectedFile.getName());
+                Files.createDirectories(destination.getParent());
+                Files.copy(selectedFile.toPath(), destination, StandardCopyOption.REPLACE_EXISTING);
+
+                imagePath = destination.toString();
+                couchImageView.setImage(new Image(destination.toUri().toString()));
+                System.out.println("Image uploaded: " + imagePath);
+            } catch (IOException e) {
+                showAlert("Error", "Failed to upload image: " + e.getMessage());
+            }
+        }
     }
 
-    private void configureListView() {
-        trainerListView.setItems(trainers);
-        trainerListView.setCellFactory(new Callback<>() {
-            @Override
-            public ListCell<Trainer> call(ListView<Trainer> param) {
-                return new ListCell<>() {
-                    private final ImageView imageView = new ImageView();
-                    private final Label nameLabel = new Label();
-                    private final VBox labelsVBox = new VBox();
+    @FXML
+    public void addCouches(ActionEvent actionEvent) {
+        System.out.println("Add Couch button clicked!");
+        String couchName = couchNameField.getText();
+        String couchAgeText = couchAgeField.getText();
+        String programs = programsField.getText();
 
-                    {
-                        imageView.setFitHeight(200);
-                        imageView.setFitWidth(200);
-                        imageView.setPreserveRatio(true);
+        if (couchName.isEmpty() || programs.isEmpty() || imagePath == null || couchAgeText.isEmpty()) {
+            showAlert("Error", "All fields must be filled in and an image must be uploaded!");
+            return;
+        }
 
-                        nameLabel.setStyle("-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #34495E;");
+        int couchAge;
+        try {
+            couchAge = Integer.parseInt(couchAgeText);
+            if (couchAge < 0) {
+                showAlert("Error", "Age must be a positive number!");
+                return;
+            }
+        } catch (NumberFormatException e) {
+            showAlert("Error", "Age must be a valid number!");
+            return;
+        }
 
-                        HBox container = new HBox(10, imageView, labelsVBox);
-                        container.setStyle("-fx-padding: 10;");
-                        setGraphic(container);
-                    }
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD)) {
+            System.out.println("Database connection successful!");
+            String sql = "INSERT INTO couches (couch_name, couch_age, programs, image_path) VALUES (?, ?, ?, ?)";
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setString(1, couchName);
+                ps.setInt(2, couchAge);
+                ps.setString(3, programs);
+                ps.setString(4, imagePath);
+                ps.executeUpdate();
+                showAlert("Success", "Couch added successfully!");
 
-//                    @Override
-//                    protected void updateItem(Trainer trainer, boolean empty) {
-//                        super.updateItem(trainer, empty);
-//                        if (empty || trainer == null) {
-//                            setGraphic(null);
-//                        } else {
-//                            try {
-//                                // Load from resources folder
-//                                InputStream stream = getClass().getResourceAsStream(
-//                                        "/org/example/fitnessworld/" + trainer.getImagePath()
-//                                );
+//                refreshCouchList();
+
+                clearFields();
+            }
+        } catch (SQLException e) {
+            showAlert("Error", "Failed to add couch: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    public void updateCouches(ActionEvent actionEvent) {
+        System.out.println("Update Couch button clicked!");
+        String couchName = couchNameField.getText();
+        String couchAgeText = couchAgeField.getText();
+        String programs = programsField.getText();
+
+        if (couchName.isEmpty() || programs.isEmpty() || couchAgeText.isEmpty()) {
+            showAlert("Error", "All fields must be filled in!");
+            return;
+        }
+
+        int couchAge;
+        try {
+            couchAge = Integer.parseInt(couchAgeText);
+            if (couchAge < 0) {
+                showAlert("Error", "Age must be a positive number!");
+                return;
+            }
+        } catch (NumberFormatException e) {
+            showAlert("Error", "Age must be a valid number!");
+            return;
+        }
+
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD)) {
+            System.out.println("Database connection successful!");
+            String sql = "UPDATE couches SET couch_age = ?, programs = ?, image_path = ? WHERE couch_name = ?";
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setInt(1, couchAge);
+                ps.setString(2, programs);
+                ps.setString(3, imagePath);
+                ps.setString(4, couchName);
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected > 0) {
+                    showAlert("Success", "Couch updated successfully!");
+//                    refreshCouchList();
+                    clearFields();
+                } else {
+                    showAlert("Error", "No couch found with the given name.");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            showAlert("Error", "Failed to update couch: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    public void deleteCouches(ActionEvent actionEvent) {
+        System.out.println("Delete Couch button clicked!");
+        String couchName = couchNameField.getText();
+
+        if (couchName.isEmpty()) {
+            showAlert("Error", "Please enter the couch name to delete.");
+            return;
+        }
+
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD)) {
+            System.out.println("Database connection successful!");
+            String sql = "DELETE FROM couches WHERE couch_name = ?";
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setString(1, couchName);
+                int rowsAffected = ps.executeUpdate();
+                if (rowsAffected > 0) {
+                    showAlert("Success", "Couch deleted successfully!");
+//                    refreshCouchList();
+                    clearFields();
+                } else {
+                    showAlert("Error", "No couch found with the given name.");
+                }
+            }
+        } catch (SQLException e) {
+            showAlert("Error", "Failed to delete couch: " + e.getMessage());
+        }
+    }
+
+//    private void refreshCouchList() {
+//        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD)) {
+//            String sql = "SELECT * FROM couches";
+//            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+//                ResultSet rs = ps.executeQuery();
+//                ObservableList<Couch> couchList = FXCollections.observableArrayList();
 //
-//                                Image image = new Image(stream);
-//                                imageView.setImage(image);
-//                            } catch (Exception e) {
-//                                // Fallback to default image
-//                                imageView.setImage(new Image(
-//                                        Objects.requireNonNull(getClass().getResourceAsStream("/org/example/fitnessworld/co2.jpg"))
-//                                ));
-//                            }
-//                        }
-//                    }
-                };
-            }
-        });
-    }
-
-    private Label createProgramLabel(String text) {
-        Label label = new Label(text);
-        label.setStyle("-fx-font-size: 12px; -fx-text-fill: #34495E;");
-        label.setWrapText(true);
-        return label;
-    }
-
-
-
-    @FXML
-    private void handleAddTrainer() {
-        TextField nameField = new TextField();
-        TextField imageField = new TextField();
-        TextArea programsArea = new TextArea();
-
-        Button addButton = new Button("Add");
-        addButton.setOnAction(e -> {
-            if (validateInput(nameField.getText(), imageField.getText())) {
-                trainers.add(createTrainerFromInput(
-                        nameField.getText(),
-                        imageField.getText(),
-                        programsArea.getText()
-                ));
-            }
-        });
-
-        rightVBox.getChildren().setAll(
-                new Label("Add New Coach:"),
-                createInputField("Name:", nameField),
-                createInputField("Image File:", imageField),
-                createInputField("Programs (one per line):", programsArea),
-                addButton
-        );
-    }
-
-    private boolean validateInput(String name, String imagePath) {
-        if (name.isEmpty() || imagePath.isEmpty()) {
-            showAlert("Validation Error", "Name and Image Path are required!");
-            return false;
-        }
-        return true;
-    }
-
-    private Trainer createTrainerFromInput(String name, String imagePath, String programs) {
-        String[] programList = programs.split("\n");
-        return new Trainer(
-                name,
-                imagePath,
-                programList.length > 0 ? programList[0] : "",
-                programList.length > 1 ? programList[1] : "",
-                programList.length > 2 ? programList[2] : ""
-        );
-    }
-
-    private VBox createInputField(String labelText, Control input) {
-        VBox container = new VBox(5);
-        container.getChildren().addAll(new Label(labelText), input);
-        return container;
-    }
-
-    @FXML
-    private void handleDeleteTrainer() {
-        Trainer selected = trainerListView.getSelectionModel().getSelectedItem();
-        if (selected != null) {
-            trainers.remove(selected);
-        }
-    }
+//                while (rs.next()) {
+//                    String name = rs.getString("couch_name");
+//                    int age = rs.getInt("couch_age");
+//                    String programs = rs.getString("programs");
+//                    String imagePath = rs.getString("image_path");
+//                    couchList.add(new Couch(name, age, programs, imagePath));
+//                }
+//
+//                couchTableView.setItems(couchList);
+//            }
+//        } catch (SQLException e) {
+//            showAlert("Error", "Failed to refresh couch list: " + e.getMessage());
+//        }
+//    }
 
     private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
     }
 
-    public static class Trainer {
-        private final String name;
-        private final String imagePath;
-        private final String[] programs;
-
-        public Trainer(String name, String imagePath, String... programs) {
-            this.name = name;
-            this.imagePath = imagePath;
-            this.programs = programs;
-        }
-
-        public String getName() { return name; }
-        public String getImagePath() { return imagePath; }
-        public String[] getPrograms() { return programs; }
+    private void clearFields() {
+        couchNameField.clear();
+        couchAgeField.clear();
+        programsField.clear();
+        couchImageView.setImage(null);
+        imagePath = null;
     }
+
+    public void ModifyCouches(ActionEvent actionEvent) throws IOException {
+        SceneSwitcher.switchScene(actionEvent, "/ModifyCouches.fxml");
+    }
+
 }

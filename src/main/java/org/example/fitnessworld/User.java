@@ -1,60 +1,49 @@
 package org.example.fitnessworld;
 
-public class User {
-    private static String username;
-    private static String email;
-    private static String token;
-    private static String Goal;
-    private static String Age;
-    private static String wedith;
+public  class User {
+    private static int age;
+    private static double weight;
+    private static double height;
+    private static String goal;
+    private static String membershipDate;
 
-    private static String height;
-    private static String membership;
-
-
-    public static void setUserData(String username, String email, String token) {
-        User.username = username;
-        User.email = email;
-        User.token = token;
+    public static void setAge(int age) {
+        User.age = age;
     }
 
-    public static void setUserperDetails(String Age, String wedith, String height, String membership) {
-        User.Age = Age;
-        User.wedith = wedith;
+    public static void setWeight(double weight) {
+        User.weight = weight;
+    }
+
+    public static void setHeight(double height) {
         User.height = height;
-        User.membership = membership;
     }
 
-    public static String getGoal() {
-        return Goal;
+    public static void setGoal(String goal) {
+        User.goal = goal;
     }
 
-    public static String getAge() {
-        return Age;
+    public static void setMembershipDate(String membershipDate) {
+        User.membershipDate = membershipDate;
     }
 
-    public static String getWedith() {
-        return wedith;
+    public static int getAge() {
+        return age;
     }
 
-    public static String getHeight() {
+    public static double getWeight() {
+        return weight;
+    }
+
+    public static double getHeight() {
         return height;
     }
 
+    public static String getGoal() {
+        return goal;
+    }
+
     public static String getMembershipDate() {
-        return membership;
-    }
-
-    public static String getUsername() {
-        return username;
-    }
-
-    public static String getEmail() {
-        return email;
-    }
-
-    public static String getToken() {
-        return token;
+        return membershipDate;
     }
 }
-
