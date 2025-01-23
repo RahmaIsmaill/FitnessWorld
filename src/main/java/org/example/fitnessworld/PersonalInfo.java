@@ -2,36 +2,32 @@ package org.example.fitnessworld;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+
 import java.io.IOException;
 
 public class PersonalInfo {
-    @FXML private Label ageLabel;
-    @FXML private Label heightLabel;
-    @FXML private Label weightLabel;
-    @FXML private Label goalLabel;
-    @FXML private Label membershipDateLabel;
+    @FXML
+    private Label AgeLabel;
+    @FXML
+    private Label HeightLabel;
+    @FXML
+    private Label WeightLabel;
+    @FXML
+    private Label GoalLabel;
+    @FXML
+    private Label memberLabel;
 
-    public void initialize() {
-        System.out.println("Initializing PersonalInfo...");
-        System.out.println("Age: " + User.getAge());
-        System.out.println("Height: " + User.getHeight());
-        System.out.println("Weight: " + User.getWeight());
-        System.out.println("Goal: " + User.getGoal());
-        System.out.println("Membership Date: " + User.getMembershipDate());
-
-        ageLabel.setText(String.valueOf(User.getAge()));
-        heightLabel.setText(String.valueOf(User.getHeight()));
-        weightLabel.setText(String.valueOf(User.getWeight()));
-        goalLabel.setText(User.getGoal());
-        membershipDateLabel.setText(User.getMembershipDate());
+    public void setUserDetails(String age, String weight, String height, String goal, String membershipDate) {
+        if (age != null) AgeLabel.setText(age);
+        if (weight != null) WeightLabel.setText(weight);
+        if (height != null) HeightLabel.setText(height);
+        if (goal != null) GoalLabel.setText(goal);
+        if (membershipDate != null) memberLabel.setText(membershipDate);
     }
 
     @FXML
-    public void handleOk(ActionEvent actionEvent) throws IOException {
+    public void handleok(ActionEvent actionEvent) throws IOException {
         SceneSwitcher.switchScene(actionEvent, "/Home.fxml");
     }
-
-
 }

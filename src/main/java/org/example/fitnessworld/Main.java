@@ -12,6 +12,7 @@ import java.sql.Connection;
 
 public class Main extends Application {
 
+
     @Override
     public void start(@NotNull Stage primaryStage) throws IOException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -22,7 +23,7 @@ public class Main extends Application {
             return;
         }
 
-        FXMLLoader fxmlLoader = new FXMLLoader(SceneSwitcher.class.getResource("/programs.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(SceneSwitcher.class.getResource("/About.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         primaryStage.setTitle("Fitness World");
         primaryStage.setScene(scene);

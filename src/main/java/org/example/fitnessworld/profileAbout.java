@@ -3,22 +3,21 @@ package org.example.fitnessworld;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+
 import java.io.IOException;
 
-
 public class profileAbout {
-        @FXML private Label usernameLabel;
-        @FXML private Label emailLabel;
-        @FXML private Label tokenLabel;
+        @FXML
+        private Label usernameLabel;
+        @FXML
+        private Label emailLabel;
+        @FXML
+        private Label tokenLabel;
 
-        public void initialize() {
-                System.out.println("Initializing profileAbout...");
-                System.out.println("Username: " + userAbout.getCurrentUserName());
-                System.out.println("Email: " + userAbout.getCurrentUserEmail());
-                System.out.println("Token: " + userAbout.getToken());
-//                usernameLabel.setText(userAbout.getCurrentUserName());
-//                emailLabel.setText(getCurrentUserEmail());
-//                tokenLabel.setText(userAbout.getToken());
+        public void setUserInfo(String email, String username, String token) {
+                if (email != null) emailLabel.setText(email);
+                if (username != null) usernameLabel.setText(username);
+                if (token != null) tokenLabel.setText(token);
         }
 
         @FXML

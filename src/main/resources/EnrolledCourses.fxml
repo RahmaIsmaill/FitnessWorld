@@ -18,7 +18,7 @@
     <!-- Header Section -->
     <VBox spacing="10" alignment="CENTER">
         <Label text="Fitness World Management System" style="-fx-font-family: 'Algerian'; -fx-font-size: 28px; -fx-text-fill: white; -fx-font-weight: bold;" />
-        <Label fx:id="welcomeLabel" text="Welcome, Admin!" style="-fx-font-family: 'Arial'; -fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+        <Label fx:id="welcomeLabel" text="Welcome to Our Fitness Club " style="-fx-font-family: 'Arial'; -fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"/>
     </VBox>
 
     <HBox spacing="20" alignment="CENTER" style="-fx-padding: 10px;">
@@ -31,17 +31,18 @@
         <Label text="Manage Enrolled Programs" style="-fx-font-family: 'Verdana'; -fx-font-size: 22px; -fx-text-fill: white; -fx-font-weight: bold;"/>
 
         <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-border-color: #ADB5BD; -fx-border-radius: 5px;">
-            <TableView fx:id="enrolledProgramsTableView" prefHeight="400" prefWidth="900" style="-fx-background-radius: 5px;">
+            <TableView fx:id="enrolledTable" prefHeight="400" prefWidth="900" style="-fx-background-radius: 5px;">
                 <columns>
-                    <TableColumn fx:id="ProgramIdColumn" text="Program ID" prefWidth="150" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-alignment: CENTER;"/>
-                    <TableColumn fx:id="ProgramNameColumn" text="Program Name" prefWidth="250" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-alignment: CENTER;"/>
-                    <TableColumn fx:id="enrollmentDateColumn" text="Enrollment Date" prefWidth="250" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-alignment: CENTER;"/>
-                    <TableColumn fx:id="priceColumn" text="Price" prefWidth="250" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-alignment: CENTER;"/>
+                    <TableColumn fx:id="programIdColumn" text="Program ID" prefWidth="150" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-alignment: CENTER;"/>
+                    <TableColumn fx:id="programNameColumn" text="Program Name" prefWidth="250" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-alignment: CENTER;"/>
+                    <TableColumn fx:id="programDateColumn" text="Enrollment Date" prefWidth="250" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-alignment: CENTER;"/>
+                    <TableColumn fx:id="programPriceColumn" text="Price" prefWidth="250" style="-fx-font-family: 'Arial'; -fx-font-size: 14px; -fx-alignment: CENTER;"/>
                 </columns>
             </TableView>
         </ScrollPane>
 
         <HBox spacing="20" alignment="CENTER" style="-fx-padding: 10px;">
+<!--            <Button text="View My Programs" onAction="#viewMyPrograms" style="-fx-background-color: #28A745; -fx-text-fill: white; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 5px;"/>-->
             <Button text="Buy Now" onAction="#BuyNow" style="-fx-background-color: #28A745; -fx-text-fill: white; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 5px;"/>
             <Button text="Delete Enrollment" onAction="#deleteEnrollment" style="-fx-background-color: #DC3545; -fx-text-fill: white; -fx-font-family: 'Arial'; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 5px;"/>
         </HBox>

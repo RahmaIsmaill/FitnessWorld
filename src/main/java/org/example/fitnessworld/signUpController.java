@@ -2,8 +2,14 @@ package org.example.fitnessworld;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -121,12 +127,15 @@ public class signUpController {
                 userId = rs.getInt(1);
             }
 
-            userAbout.setCurrentUserEmail(email);
-            userAbout.setCurrentUserName(username);
-            userAbout.setToken(token);
-
             showAlert(Alert.AlertType.INFORMATION, "Success", "Successfully joined!");
-            SceneSwitcher.switchScene(actionEvent, "/About.fxml");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
+            Parent root = loader.load();
+            Home homeController = loader.getController();
+            homeController.setUserInfo(email, username, token);
+
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
         } catch (SQLException e) {
             showAlert(Alert.AlertType.ERROR, "Database Error", "Failed to join: " + e.getMessage());
         }

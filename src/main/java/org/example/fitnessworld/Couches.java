@@ -1,7 +1,5 @@
 package org.example.fitnessworld;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -258,7 +256,7 @@ public class Couches {
     }
 
     public void ModifyCouches(ActionEvent actionEvent) throws IOException {
-        SceneSwitcher.switchScene(actionEvent, "/ModifyCouches.fxml");
+        SceneSwitcher.switchScene(actionEvent, "/Modifyprograms.fxml");
     }
 
 }

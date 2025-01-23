@@ -5,30 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="263a0c77-7eff-4fc2-b0d3-c74f029e1285" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/images/Screenshot (166).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/Screenshot 2025-01-22 212017.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/Couch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/EnrolledCourses.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/PaymentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/userAbout.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/EnrolledCourses.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ModifyCouches.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Payment.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/Program.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/About.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/About.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/Couches.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/Couches.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/ForgotPassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/ForgotPassword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/EnrolledCourses.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/EnrolledCourses.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/Home.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/PaymentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/PersonalInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/PersonalInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/ResetPassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/ResetPassword.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/User.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/loginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/loginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/profileAbout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/profileAbout.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/programs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/programs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/signUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/signUpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Couches.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Couches.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/fitnessworld/userAbout.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/EnrolledCourses.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/EnrolledCourses.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ModifyCouches.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Payment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Payment.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/personalInfo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/personalInfo.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/profileAbout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/profileAbout.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/programs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/programs.fxml" afterDir="false" />
