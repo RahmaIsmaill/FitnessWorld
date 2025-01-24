@@ -121,7 +121,6 @@ public class loginController {
                 if (rs.next()) {
                     showAlert(Alert.AlertType.INFORMATION, "Success", "Login successful!");
                     programs program= new programs();
-//                    program.setUsername(username);
                     SceneSwitcher.switchScene(actionEvent, "/Home.fxml");
                 } else {
                     showAlert(Alert.AlertType.ERROR, "Login Failed", "Invalid username, password, or role.");

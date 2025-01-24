@@ -23,7 +23,7 @@ public class Main extends Application {
             return;
         }
 
-        FXMLLoader fxmlLoader = new FXMLLoader(SceneSwitcher.class.getResource("/About.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(SceneSwitcher.class.getResource("/login.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         primaryStage.setTitle("Fitness World");
         primaryStage.setScene(scene);

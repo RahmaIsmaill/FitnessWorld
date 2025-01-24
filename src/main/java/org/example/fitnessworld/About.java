@@ -28,12 +28,22 @@ public class About {
     @FXML
     private TextField membershipDateField;
 
+    private String email;
+    private String username;
+    private String token;
+
     private void showAlert(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    public void setUserInfo(String email, String username, String token) {
+        this.email = email;
+        this.username = username;
+        this.token = token;
     }
 
     @FXML
@@ -96,6 +106,7 @@ public class About {
             Parent root = loader.load();
             Home homeController = loader.getController();
             homeController.setUserDetails(age, weight, height, goal, membershipDate);
+            homeController.setUserInfo(email,username,token);
 
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));

@@ -5,14 +5,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane  xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fitnessworld.loginController" style="-fx-background-color: linear-gradient(to bottom, #e3f2fd, #90caf9);">
-    <VBox  alignment="CENTER_LEFT" prefHeight="623.0" prefWidth="468.0" spacing="20" style="-fx-padding: 30;">
-<!--        <Label text="Log in" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #004d98; -fx-font-style: italic;">-->
-<!--            <VBox.margin>-->
-<!--                <Insets top="-50"/>-->
-<!--            </VBox.margin>-->
-<!--        </Label>-->
-
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<AnchorPane prefWidth="700" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fitnessworld.loginController" style="-fx-background-color: linear-gradient(to bottom, #e3f2fd, #90caf9);">
+   <HBox>
+    <VBox  alignment="CENTER_LEFT" prefHeight="623.0" prefWidth="450.0"  spacing="20" style="-fx-padding: 30; -fx-background-color: linear-gradient(to bottom, #e3f2fd, #90caf9);">
         <VBox alignment="CENTER_LEFT" prefWidth="300" spacing="5">
             <Label text="Username or Email" style="-fx-font-size: 16px; -fx-font-style: italic; -fx-text-fill: #004d98;"/>
             <HBox alignment="CENTER_LEFT" spacing="10">
@@ -46,4 +43,13 @@
         </VBox>
 
     </VBox>
+
+<!--    <VBox alignment="CENTER" style="-fx-background-color: white">-->
+<!--        <ImageView fitHeight="560" fitWidth="370" preserveRatio="true">-->
+<!--            <image>-->
+<!--                <Image url="@Home.jpg" />-->
+<!--            </image>-->
+<!--        </ImageView>-->
+<!--    </VBox>-->
+   </HBox>
 </AnchorPane>

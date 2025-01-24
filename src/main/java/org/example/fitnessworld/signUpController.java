@@ -128,10 +128,11 @@ public class signUpController {
             }
 
             showAlert(Alert.AlertType.INFORMATION, "Success", "Successfully joined!");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Home.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/About.fxml"));
             Parent root = loader.load();
-            Home homeController = loader.getController();
-            homeController.setUserInfo(email, username, token);
+            About aboutController = loader.getController();
+            aboutController.setUserInfo(email, username, token);
+
 
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));

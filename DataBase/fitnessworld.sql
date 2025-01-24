@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 23, 2025 at 11:29 PM
+-- Generation Time: Jan 24, 2025 at 02:40 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -55,13 +55,6 @@ CREATE TABLE `enrollments` (
   `EnrollmentDate` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `enrollments`
---
-
-INSERT INTO `enrollments` (`EnrollmentID`, `UserID`, `ProgramID`, `EnrollmentDate`) VALUES
-(6, 1, 3, '2025-01-23 21:24:43');
-
 -- --------------------------------------------------------
 
 --
@@ -82,7 +75,7 @@ CREATE TABLE `programs` (
 
 INSERT INTO `programs` (`id`, `name`, `Date`, `price`, `trainer_name`) VALUES
 (3, 'zommba', '2020-02-02', 10000.00, 'rahma'),
-(4, 'Yoga', '2004-02-01', 800.00, 'Younnis');
+(4, 'Yoga', '2022-02-02', 120.00, 'Yonnis');
 
 -- --------------------------------------------------------
 
@@ -158,7 +151,11 @@ INSERT INTO `userdetails` (`user_id`, `age`, `weight`, `height`, `goal`, `member
 (52, 19, 12.00, 11.00, '11', '1111-11-11'),
 (53, 55, 55.00, 160.00, '66', '6666-66-66'),
 (54, 66, 55.00, 56.00, '65', '6666-66-66'),
-(55, 88, 88.00, 88.00, '88', '8888-88-88');
+(55, 88, 88.00, 88.00, '88', '8888-88-88'),
+(56, 19, 80.00, 190.00, 'lose weight', '2025-01-24'),
+(57, 77, 89.00, 180.00, 'gain weight', '2020-02-02'),
+(58, 20, 44.00, 170.00, 'lose', '2004-05-06'),
+(59, 44, 44.00, 144.00, '44', '4444-44-44');
 
 -- --------------------------------------------------------
 
@@ -193,7 +190,13 @@ INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `role`, `first_
 (11, 'you', 'u@gmail.com', '7777777777', 'Trainee', 'younnis', 'n', '90'),
 (12, 'r', 'r@gm.vom', '888888888888', 'Trainee', 'r', 'r', '55'),
 (13, 'younniss', 'uou@gmil.com', '555555555', 'Trainee', 'you', 'nnis', '09'),
-(14, 'rahmah', 'rahmah@gmail.com', '123456789', 'Trainee', 'rahma', 'aa', '99');
+(14, 'rahmah', 'rahmah@gmail.com', '777666888', 'Trainee', 'rahma', 'aa', '99'),
+(15, 'som3a', 'som3a@gmail.com', 'som3aaaaaaa', 'Trainee', 'ismail', 'l', '2'),
+(16, 'tamer', 't@gmail.com', '999999999', 'Trainee', 'tamer', 'samir', '0'),
+(17, 'kl', 'kl@gmail.com', '000000000', 'Trainee', 'kk', 'll', '90'),
+(18, 'karma', 'k@gmail.com', '777777777', 'Trainee', 'kar', 'ma', '5'),
+(19, 'nur', 'nur@gmail.com', 'nur456780', 'Trainee', 'nour', 'ali', '9'),
+(20, 'ux', 'ux@gmail.com', '444444444444', 'Trainee', 'u', 'x', '4');
 
 --
 -- Indexes for dumped tables
@@ -246,25 +249,25 @@ ALTER TABLE `couches`
 -- AUTO_INCREMENT for table `enrollments`
 --
 ALTER TABLE `enrollments`
-  MODIFY `EnrollmentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `EnrollmentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `programs`
 --
 ALTER TABLE `programs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `userdetails`
 --
 ALTER TABLE `userdetails`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Constraints for dumped tables

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane style="fx-background-color: linear-gradient(to right, #004d80, #66a5ad);" prefHeight="680.0" prefWidth="770.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fitnessworld.Home">
+<AnchorPane style="-fx-background-color: linear-gradient(to right, #004d80, #66a5ad);" prefHeight="680.0" prefWidth="770.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.fitnessworld.Home">
 
     <VBox spacing="0">
 
@@ -36,7 +36,7 @@
             </MenuBar>
         </HBox>
 
-        <HBox spacing="20" style="-fx-padding: 20; -fx-background-color: linear-gradient(to bottom, #f0f8ff, #b3cde0);" prefHeight="600">
+        <HBox spacing="20" style="-fx-padding: 20;-fx-background-color: linear-gradient(to right, #004d80, #66a5ad);" prefHeight="600">
             <VBox prefWidth="370" style="-fx-padding: 10; -fx-background-color: linear-gradient(to bottom, #f0f8ff, #b3cde0);">
                 <Label prefHeight="560" prefWidth="390" wrapText="true" style="-fx-background-color: white; -fx-font-size: 14px; -fx-text-fill: #2C3E50; -fx-border-color: #BDC3C7; -fx-border-radius: 5; -fx-padding: 15;"
                        text="Welcome to Our Fitness World Club .

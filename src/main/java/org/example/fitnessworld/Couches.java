@@ -206,7 +206,6 @@ public class Couches {
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected > 0) {
                     showAlert("Success", "Couch deleted successfully!");
-//                    refreshCouchList();
                     clearFields();
                 } else {
                     showAlert("Error", "No couch found with the given name.");
@@ -216,28 +215,6 @@ public class Couches {
             showAlert("Error", "Failed to delete couch: " + e.getMessage());
         }
     }
-
-//    private void refreshCouchList() {
-//        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD)) {
-//            String sql = "SELECT * FROM couches";
-//            try (PreparedStatement ps = conn.prepareStatement(sql)) {
-//                ResultSet rs = ps.executeQuery();
-//                ObservableList<Couch> couchList = FXCollections.observableArrayList();
-//
-//                while (rs.next()) {
-//                    String name = rs.getString("couch_name");
-//                    int age = rs.getInt("couch_age");
-//                    String programs = rs.getString("programs");
-//                    String imagePath = rs.getString("image_path");
-//                    couchList.add(new Couch(name, age, programs, imagePath));
-//                }
-//
-//                couchTableView.setItems(couchList);
-//            }
-//        } catch (SQLException e) {
-//            showAlert("Error", "Failed to refresh couch list: " + e.getMessage());
-//        }
-//    }
 
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

@@ -21,24 +21,6 @@ public class Home {
     private String goal;
     private String membershipDate;
 
-    @FXML
-    private Label AgeLabel;
-    @FXML
-    private Label HeightLabel;
-    @FXML
-    private Label WeightLabel;
-    @FXML
-    private Label GoalLabel;
-    @FXML
-    private Label memberLabel;
-
-    @FXML
-    private Label usernameLabel;
-    @FXML
-    private Label emailLabel;
-    @FXML
-    private Label tokenLabel;
-
     private String email;
     private String username;
     private String token;
@@ -82,6 +64,10 @@ public class Home {
         profileAbout profileAboutController = loader.getController();
 
         System.out.println("Controller class: " + profileAboutController.getClass().getName());
+
+        System.out.println(email);
+        System.out.println(username);
+        System.out.println(token);
 
         profileAboutController.setUserInfo(email, username, token);
 

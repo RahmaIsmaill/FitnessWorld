@@ -19,7 +19,6 @@ public class Program {
         this.trainerName = new SimpleStringProperty(trainerName);
     }
 
-    // Getters for properties (required for TableView)
     public int getId() { return id.get(); }
     public SimpleIntegerProperty idProperty() { return id; }
 

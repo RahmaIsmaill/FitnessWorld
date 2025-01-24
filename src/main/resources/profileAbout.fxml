@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefWidth="450" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.fitnessworld.profileAbout" alignment="CENTER" spacing="25" style="-fx-background-color: linear-gradient(to bottom, #f0f4f8, #d9eaf6); -fx-padding: 40;">
+<VBox prefWidth="500" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.fitnessworld.profileAbout" alignment="CENTER" spacing="25" style="-fx-background-color: linear-gradient(to bottom, #f0f4f8, #d9eaf6); -fx-padding: 40;">
 
-    <Label text="Profile Information" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #003366;"/>
+    <Label text="Profile Information   " style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #003366;"/>
 
     <VBox spacing="12">
         <HBox alignment="CENTER_LEFT" spacing="15">
